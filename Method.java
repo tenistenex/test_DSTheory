@@ -22,4 +22,37 @@ public class Method {
 		
 		return sen;
 	}
+	
+	public CompositeContext composite(CompositeContext context){
+		System.out.println("composite!!!!!");
+		double value = 0;
+		int memberCount = context.member.size();
+		for (int i=0; i < memberCount; i++){
+				switch(context.member.get(i).getClass().toString()){
+				case "class Sensor":
+					Sensor s = (Sensor)context.member.get(i);
+					value = value + s.set.get("on");
+					System.out.println("Object is Sensor");
+					break;
+				
+				case "class ContextA":
+					ContextA a = (ContextA)context.member.get(i);
+					value = value + a.set.get(a.contextName);
+					System.out.println("Object is ContextA");
+					break;
+					
+				case "ContextB":
+					ContextB b = (ContextB)context.member.get(i);
+					value = value + b.set.get(b.contextName);
+					System.out.println("Object is ContextB");
+					break;
+				}
+				System.out.println(value);
+				
+			context.set.put(context.contextName, value/(i+1));  //the value of context("on")!
+			}
+		
+		return context;
+		
+	}
 }

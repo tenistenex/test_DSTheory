@@ -13,7 +13,7 @@ public class ContextB {
 		
 		this.contextName = contextName;
 		 a_value = a.set.get("on");
-		 b_value = b.set.get("on");
+		 b_value = b.set.get("on"); 
 		 if (a_value > b_value){
 			 set.put(contextName, a_value);
 		 } 
@@ -39,6 +39,7 @@ public class ContextB {
 		 else{
 			 set.put("nor_"+contextName, b_value);
 		 }
+		 
 		 
 		 
 		  
