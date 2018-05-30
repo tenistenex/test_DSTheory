@@ -1,3 +1,5 @@
+package test_DSTheory;
+
 
 public class Method {
 	
@@ -24,32 +26,46 @@ public class Method {
 	}
 	
 	public CompositeContext composite(CompositeContext context){
-		System.out.println("composite!!!!!");
+		//System.out.println("composite!!!!!");
 		double value = 0;
+		double notvalue = 0;
+		double norvalue = 0;
+		
 		int memberCount = context.member.size();
+		//System.out.println(context.member.get(1).getClass().getName().toString());   //this line print the object which class is
 		for (int i=0; i < memberCount; i++){
-				switch(context.member.get(i).getClass().toString()){
-				case "class Sensor":
+				switch(context.member.get(i).getClass().getName().toString()){
+				case "test_DSTheory.Sensor":
 					Sensor s = (Sensor)context.member.get(i);
 					value = value + s.set.get("on");
-					System.out.println("Object is Sensor");
+					notvalue = notvalue + s.set.get("off");
+					norvalue = norvalue + s.set.get("nor");
+					//System.out.println("Object is Sensor");
 					break;
 				
-				case "class ContextA":
+				case "test_DSTheory.ContextA":
 					ContextA a = (ContextA)context.member.get(i);
 					value = value + a.set.get(a.contextName);
-					System.out.println("Object is ContextA");
+					notvalue = notvalue + a.set.get("not_"+a.contextName);
+					norvalue = norvalue + a.set.get("nor_"+a.contextName);
+					//System.out.println("Object is ContextA");
 					break;
 					
-				case "ContextB":
+				case "test_DSTheory.ContextB":
 					ContextB b = (ContextB)context.member.get(i);
 					value = value + b.set.get(b.contextName);
-					System.out.println("Object is ContextB");
+					value = value + b.set.get(b.contextName);
+					notvalue = notvalue + b.set.get("not_"+b.contextName);
+					norvalue = norvalue + b.set.get("nor_"+b.contextName);
+					
+					//System.out.println("Object is ContextB");
 					break;
 				}
-				System.out.println(value);
+				
 				
 			context.set.put(context.contextName, value/(i+1));  //the value of context("on")!
+			context.set.put("not_"+context.contextName, notvalue/(i+1));
+			context.set.put("nor_"+context.contextName, norvalue/(i+1));
 			}
 		
 		return context;
