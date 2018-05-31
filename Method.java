@@ -71,4 +71,25 @@ public class Method {
 		return context;
 		
 	}
+	
+	public Activity DempsterCombination(Activity a, Activity b){
+		double value;
+		double notvalue;
+		double norvalue;
+		Activity c = new Activity();
+		c.activityName = a.activityName;
+		
+		value = (a.set.get(a.activityName)*b.set.get(b.activityName) + a.set.get("nor_"+a.activityName)*b.set.get(b.activityName) + a.set.get(a.activityName)*b.set.get("nor_"+b.activityName))/(1-(a.set.get(a.activityName)*b.set.get("not_"+b.activityName)+a.set.get("not_"+a.activityName)*b.set.get(b.activityName)));
+		/*System.out.println("************");
+		System.out.println(value);
+		System.out.println("************");*/
+		c.set.put(c.activityName, value);
+		notvalue = (a.set.get("not_" + a.activityName)*b.set.get("not_" + b.activityName) + a.set.get("nor_" + a.activityName)*b.set.get("not_" + b.activityName)+a.set.get("not_" + a.activityName)*b.set.get("nor_" + b.activityName))/(1-(a.set.get(a.activityName)*b.set.get("not_"+b.activityName)+a.set.get("not_"+a.activityName)*b.set.get(b.activityName)));
+		c.set.put("not_"+c.activityName, notvalue);
+		norvalue = 1-(value+notvalue);
+		c.set.put("nor_"+c.activityName, norvalue);
+		return c;
+	}
+	
+	
 }

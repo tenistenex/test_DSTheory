@@ -100,6 +100,15 @@ public class Count {
 		System.out.println(MakeHotDrink3.set.get("not_"+MakeHotDrink3.activityName));
 		System.out.println(MakeHotDrink3.set.get("nor_"+MakeHotDrink3.activityName));
 		
+		System.out.println("Demphster Combination");
+		System.out.println("MakeHotDrinkall value: ");
+		Activity MakeHotDrinkall = new Activity();
+		MakeHotDrinkall = method.DempsterCombination(MakeHotDrink, MakeHotDrink2);
+		MakeHotDrinkall = method.DempsterCombination(MakeHotDrinkall, MakeHotDrink3);
+		//MakeHotDrinkall = method.DempsterCombination(method.DempsterCombination(MakeHotDrink, MakeHotDrink2),MakeHotDrink3);
+		System.out.println(MakeHotDrinkall.set.get(MakeHotDrinkall.activityName));
+		System.out.println(MakeHotDrinkall.set.get("not_"+MakeHotDrinkall.activityName));
+		System.out.println(MakeHotDrinkall.set.get("nor_"+MakeHotDrinkall.activityName));
 
 	}
 }
