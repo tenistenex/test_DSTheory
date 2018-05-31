@@ -109,6 +109,13 @@ public class Count {
 		System.out.println(MakeHotDrinkall.set.get(MakeHotDrinkall.activityName));
 		System.out.println(MakeHotDrinkall.set.get("not_"+MakeHotDrinkall.activityName));
 		System.out.println(MakeHotDrinkall.set.get("nor_"+MakeHotDrinkall.activityName));
+		
+		System.out.println("Belief and Plausibility");
+		System.out.println(method.Belief(MakeHotDrinkall));
+		System.out.println(method.Plausibility(MakeHotDrinkall));
+		System.out.println(method.Belief(MakeColdDrink));
+		System.out.println(method.Plausibility(MakeColdDrink));
+		
 
 	}
 }

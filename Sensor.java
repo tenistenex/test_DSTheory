@@ -9,8 +9,6 @@ public class Sensor {
 	Map<String, Double> set = new HashMap<String, Double>();
     
 	
-	
-	
 	public Sensor(String name,double d){
 		this.sensorName = name;
 		this.discoutingRate = d;

@@ -91,5 +91,11 @@ public class Method {
 		return c;
 	}
 	
+	public double Belief(Activity a){
+		return a.set.get(a.activityName);
+	}
 	
+	public double Plausibility(Activity a){
+		return a.set.get(a.activityName) + a.set.get("nor_"+a.activityName);
+	}
 }
