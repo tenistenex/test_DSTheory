@@ -54,18 +54,16 @@ public class Method {
 				case "test_DSTheory.ContextB":
 					ContextB b = (ContextB)context.member.get(i);
 					value = value + b.set.get(b.contextName);
-					value = value + b.set.get(b.contextName);
 					notvalue = notvalue + b.set.get("not_"+b.contextName);
 					norvalue = norvalue + b.set.get("nor_"+b.contextName);
-					
 					//System.out.println("Object is ContextB");
 					break;
 				}
 				
 				
-			context.set.put(context.contextName, value/(i+1));  //the value of context("on")!
-			context.set.put("not_"+context.contextName, notvalue/(i+1));
-			context.set.put("nor_"+context.contextName, norvalue/(i+1));
+			context.set.put(context.contextName, value/context.member.size());  //the value of context("on")!
+			context.set.put("not_"+context.contextName, notvalue/context.member.size());
+			context.set.put("nor_"+context.contextName, norvalue/context.member.size());
 			}
 		
 		return context;
@@ -80,9 +78,9 @@ public class Method {
 		c.activityName = a.activityName;
 		
 		value = (a.set.get(a.activityName)*b.set.get(b.activityName) + a.set.get("nor_"+a.activityName)*b.set.get(b.activityName) + a.set.get(a.activityName)*b.set.get("nor_"+b.activityName))/(1-(a.set.get(a.activityName)*b.set.get("not_"+b.activityName)+a.set.get("not_"+a.activityName)*b.set.get(b.activityName)));
-		/*System.out.println("************");
+		System.out.println("************");
 		System.out.println(value);
-		System.out.println("************");*/
+		System.out.println("************");
 		c.set.put(c.activityName, value);
 		notvalue = (a.set.get("not_" + a.activityName)*b.set.get("not_" + b.activityName) + a.set.get("nor_" + a.activityName)*b.set.get("not_" + b.activityName)+a.set.get("not_" + a.activityName)*b.set.get("nor_" + b.activityName))/(1-(a.set.get(a.activityName)*b.set.get("not_"+b.activityName)+a.set.get("not_"+a.activityName)*b.set.get(b.activityName)));
 		c.set.put("not_"+c.activityName, notvalue);

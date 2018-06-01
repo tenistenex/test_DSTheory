@@ -24,6 +24,12 @@ public class ContextA {
 				this.set.put("nor_" + contextName, value);
 				
 			}
+			else {
+				this.contextName = contextName;
+				this.set.put(contextName, 0.0);
+				this.set.put("not_"+contextName, 0.0);
+				this.set.put("nor_"+contextName, 1.0);
+			}
 
 	}
 }

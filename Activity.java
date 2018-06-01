@@ -36,6 +36,13 @@ public class Activity {
 			
 		}
 		
+		else {
+			this.set.put(this.activityName, 0.0);
+			this.set.put("not_"+this.activityName, 0.0);
+			this.set.put("nor_"+this.activityName, 1.0);
+		}
+		
+		
 	}
 	
 	public Activity(String activityName,Sensor s,double mapValue){
@@ -56,9 +63,9 @@ public class Activity {
 		
 		else if (s.set.get("off") != 0) {  
 			
-			System.out.println("**************");
+			/*System.out.println("**************");
 			System.out.println(value);
-			System.out.println("**************");
+			System.out.println("**************");*/
 			value = 1; // context map to nor context
 			this.set.put(this.activityName, 0.0);
 			this.set.put("un_" + this.activityName, value);   //this mapping is strange?
@@ -68,6 +75,15 @@ public class Activity {
 			this.set.put(this.activityName, 0.0);    //need to check again!
 			this.set.put("nor_" +  this.activityName, value);*/
 			
+		}
+		
+		else if (s.set.get("nor") != 0){
+			
+			value = 1; // context map to nor context
+			this.set.put(this.activityName, 0.0);
+			this.set.put("un_" + this.activityName, value);   //this mapping is strange?
+			this.set.put("not_" + this.activityName, 0.0);
+			this.set.put("nor_" + this.activityName, value);  
 		}
 		
 	}

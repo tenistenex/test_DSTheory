@@ -14,13 +14,13 @@ public class Count {
 		Sensor scof = new Sensor("scof", 0.05);
 		Sensor ssug = new Sensor("ssug", 0.05);
 
-		scup.set.put("on", 1.0);
-		sfri.set.put("on", 1.0);
-		swat.set.put("off", 1.0);
-		sket.set.put("off", 1.0);
-		stea.set.put("off", 1.0);
-		scof.set.put("off", 1.0);
-		ssug.set.put("off", 1.0);
+		scup.set.put("nor", 1.0);
+		sfri.set.put("nor", 1.0);
+		swat.set.put("nor", 1.0);
+		sket.set.put("nor", 1.0);
+		stea.set.put("nor", 1.0);   //problem
+		scof.set.put("nor", 1.0);	//problem
+		ssug.set.put("nor", 1.0);
 
 		// count discount rate//
 		scup = method.countRate(scup);
@@ -53,12 +53,12 @@ public class Count {
 		juiceAndcup.addMember(juice);
 		juiceAndcup.addMember(scup);
 		method.composite(juiceAndcup);
-		System.out.print("juiceAndcup value:");
+		/*System.out.print("juiceAndcup value:");
 		System.out.println(juiceAndcup.set.get("juiceAndcup"));
 		System.out.print("not juiceAndcup value:");
 		System.out.println(juiceAndcup.set.get("not_juiceAndcup"));
 		System.out.print("nor juiceAndcup value:");
-		System.out.println(juiceAndcup.set.get("nor_juiceAndcup"));
+		System.out.println(juiceAndcup.set.get("nor_juiceAndcup"));*/
 		
 		
 		CompositeContext cwktORc = new CompositeContext("cwktORc");
@@ -67,54 +67,59 @@ public class Count {
 		cwktORc.addMember(sket);
 		cwktORc.addMember(teaORcof);
 		method.composite(cwktORc);
-		System.out.print("cwktORc value:");
+	/*	System.out.print("cwktORc value:");
 		System.out.println(cwktORc.set.get("cwktORc"));
 		System.out.print("not cwktORc value:");
 		System.out.println(cwktORc.set.get("not_cwktORc"));
 		System.out.print("nor cwktORc value:");
-		System.out.println(cwktORc.set.get("nor_cwktORc"));
+		System.out.println(cwktORc.set.get("nor_cwktORc"));*/
 		
 		
-		System.out.println("Translating to activity node");
-		System.out.println("activity node : MakeColdDrink");
+	/*	System.out.println("Translating to activity node");
+		System.out.println("activity node : MakeColdDrink");*/
 		Activity MakeColdDrink = new Activity("MakeColdDrink",juiceAndcup);
-		System.out.println(MakeColdDrink.set.get(MakeColdDrink.activityName));
+	/*	System.out.println(MakeColdDrink.set.get(MakeColdDrink.activityName));
 		System.out.println(MakeColdDrink.set.get("not_"+MakeColdDrink.activityName));
-		System.out.println(MakeColdDrink.set.get("nor_"+MakeColdDrink.activityName));
+		System.out.println(MakeColdDrink.set.get("nor_"+MakeColdDrink.activityName));*/
 		
-		System.out.println("activity node : MakeHotDrink");
-		Activity MakeHotDrink = new Activity("MakeColdDrink",cwktORc);
-		System.out.println(MakeHotDrink.set.get(MakeHotDrink.activityName));
+	/*	System.out.println("activity node : MakeHotDrink");*/
+		Activity MakeHotDrink = new Activity("MakeHotDrink",cwktORc);
+	/*	System.out.println(MakeHotDrink.set.get(MakeHotDrink.activityName));
 		System.out.println(MakeHotDrink.set.get("not_"+MakeHotDrink.activityName));
-		System.out.println(MakeHotDrink.set.get("nor_"+MakeHotDrink.activityName));
+		System.out.println(MakeHotDrink.set.get("nor_"+MakeHotDrink.activityName));*/
 		
-		System.out.println("activity node : MakeHotDrink2");
-		Activity MakeHotDrink2 = new Activity("MakeColdDrink2",milk, 0.7);
-		System.out.println(MakeHotDrink2.set.get(MakeHotDrink2.activityName));
+	//	System.out.println("activity node : MakeHotDrink2");
+		Activity MakeHotDrink2 = new Activity("MakeHotDrink2",milk, 0.7);
+	/*	System.out.println(MakeHotDrink2.set.get(MakeHotDrink2.activityName));
 		System.out.println(MakeHotDrink2.set.get("not_"+MakeHotDrink2.activityName));
-		System.out.println(MakeHotDrink2.set.get("nor_"+MakeHotDrink2.activityName));
+		System.out.println(MakeHotDrink2.set.get("nor_"+MakeHotDrink2.activityName));*/
 		
-		System.out.println("activity node : MakeHotDrink3");
-		Activity MakeHotDrink3 = new Activity("MakeColdDrink3",ssug, 0.4);
-		System.out.println(MakeHotDrink3.set.get(MakeHotDrink3.activityName));
+	//	System.out.println("activity node : MakeHotDrink3");
+		Activity MakeHotDrink3 = new Activity("MakeHotDrink3",ssug, 0.4);
+	/*	System.out.println(MakeHotDrink3.set.get(MakeHotDrink3.activityName));
 		System.out.println(MakeHotDrink3.set.get("not_"+MakeHotDrink3.activityName));
-		System.out.println(MakeHotDrink3.set.get("nor_"+MakeHotDrink3.activityName));
+		System.out.println(MakeHotDrink3.set.get("nor_"+MakeHotDrink3.activityName));*/
 		
-		System.out.println("Demphster Combination");
-		System.out.println("MakeHotDrinkall value: ");
+	/*	System.out.println("Demphster Combination");
+		System.out.println("MakeHotDrinkall value: ");*/
 		Activity MakeHotDrinkall = new Activity();
 		MakeHotDrinkall = method.DempsterCombination(MakeHotDrink, MakeHotDrink2);
 		MakeHotDrinkall = method.DempsterCombination(MakeHotDrinkall, MakeHotDrink3);
 		//MakeHotDrinkall = method.DempsterCombination(method.DempsterCombination(MakeHotDrink, MakeHotDrink2),MakeHotDrink3);
-		System.out.println(MakeHotDrinkall.set.get(MakeHotDrinkall.activityName));
+		/*System.out.println(MakeHotDrinkall.set.get(MakeHotDrinkall.activityName));
 		System.out.println(MakeHotDrinkall.set.get("not_"+MakeHotDrinkall.activityName));
-		System.out.println(MakeHotDrinkall.set.get("nor_"+MakeHotDrinkall.activityName));
+		System.out.println(MakeHotDrinkall.set.get("nor_"+MakeHotDrinkall.activityName));*/
 		
 		System.out.println("Belief and Plausibility");
-		System.out.println(method.Belief(MakeHotDrinkall));
-		System.out.println(method.Plausibility(MakeHotDrinkall));
+		System.out.print("Bel(MakeColdDrink) :");
 		System.out.println(method.Belief(MakeColdDrink));
+		System.out.print("Pls(MakeColdDrink) :");
 		System.out.println(method.Plausibility(MakeColdDrink));
+		System.out.print("Bel(MakeHotDrink) :");
+		System.out.println(method.Belief(MakeHotDrinkall));
+		System.out.print("Pls(MakeHotDrink) :");
+		System.out.println(method.Plausibility(MakeHotDrinkall));
+		
 		
 
 	}
