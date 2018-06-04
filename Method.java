@@ -15,11 +15,16 @@ public class Method {
 			value = rate + (1 - rate)*sen.set.get("nor");
 			sen.set.put("nor", value);
 		}
-		else{
+		else if (sen.set.get("off") != 0){
 			value = sen.set.get("off") * (1 - rate);
 			sen.set.put("off", value);
 			value = rate + (1 - rate)*sen.set.get("nor");
 			sen.set.put("nor", value);
+		}
+		else{
+			sen.set.put("on", 0.0);
+			sen.set.put("off", 0.0);
+			sen.set.put("nor", 1.0);
 		}
 		
 		return sen;

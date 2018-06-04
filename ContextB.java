@@ -21,9 +21,9 @@ public class ContextB {
 		 else{
 			 set.put(contextName, b_value);
 		 }
+		 
 		 a_value = a.set.get("off");
 		 b_value = b.set.get("off");
-		 
 		 if (a_value > b_value){
 			 set.put("not_"+contextName, a_value);
 		 } 
