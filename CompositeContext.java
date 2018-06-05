@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class CompositeContext {
 	String contextName;
-	public ArrayList member = new ArrayList<>();
+	public ArrayList<Context> member = new ArrayList<Context>();
 	
 	Map<String, Double> set = new HashMap<String, Double>();
 	
@@ -17,17 +17,8 @@ public class CompositeContext {
 		this.contextName = contextName;
 	}
 	
-	public void addMember(Sensor s){
-		member.add(s);
-	}
-	
-	public void addMember(ContextA a){
+	public void addMember(Context a){
 		member.add(a);
 	}
-	
-	public void addMember(ContextB b){
-		member.add(b);
-	}
-	
 	
 }

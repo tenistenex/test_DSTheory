@@ -34,33 +34,39 @@ public class Count {
 		scof = method.countRate(scof);
 		ssug = method.countRate(ssug);
 		
-		// 進度: 設好初值，要簡介context的node有沒有問題
 
-		System.out.println("sfir on:"+sfri.set.get("on"));
+/*		System.out.println("sfir on:"+sfri.set.get("on"));
 		System.out.println("sfir off:"+sfri.set.get("off"));
-		System.out.println("sfir nor:"+sfri.set.get("nor"));
+		System.out.println("sfir nor:"+sfri.set.get("nor"));*/
 		//System.out.println(scup.set.get("on"));
 		// set context and map
 		//System.out.println("******contextA****");
-		ContextA juice = new ContextA("juice",sfri,0.9);
-		ContextA milk = new ContextA("milk",sfri,0.1);
-		
-		System.out.println("juice :"+juice.set.get("juice"));
+		Context cup = new Context("cup",scup);
+		Context wat = new Context("wat",swat);
+		Context ket = new Context("ket",sket);
+		Context sug = new Context("sug",ssug);
+		Context juice = new Context("juice",sfri,0.9);
+		Context milk = new Context("milk",sfri,0.1);
+/*		System.out.println("juice :"+juice.set.get("juice"));
 		System.out.println("not_juice:"+juice.set.get("not_juice"));
-		System.out.println("nor_juice:"+juice.set.get("nor_juice"));
+		System.out.println("nor_juice:"+juice.set.get("nor_juice"));*/
 		
 		
-		ContextB teaORcof = new ContextB("teaORcof", scof, stea);
-		System.out.println("teaORcof :"+teaORcof.set.get("teaORcof"));
+		Context teaORcof = new Context("teaORcof", scof, stea);
+		
+/*		System.out.println("teaORcof :"+teaORcof.set.get("teaORcof"));
 		System.out.println("not_teaORcof:"+teaORcof.set.get("not_teaORcof"));
-		System.out.println("nor_teaORcof:"+teaORcof.set.get("nor_teaORcof"));
+		System.out.println("nor_teaORcof:"+teaORcof.set.get("nor_teaORcof"));*/
 		
 		
-		System.out.println("******composite context*****");
+//		System.out.println("******composite context*****");
 		CompositeContext juiceAndcup = new CompositeContext("juiceAndcup");
 		juiceAndcup.addMember(juice);
-		juiceAndcup.addMember(scup);
+		juiceAndcup.addMember(cup);
 		method.composite(juiceAndcup);
+		
+		
+		
 		System.out.print("juiceAndcup value:");
 		System.out.println(juiceAndcup.set.get("juiceAndcup"));
 		System.out.print("not juiceAndcup value:");
@@ -70,9 +76,9 @@ public class Count {
 		
 		
 		CompositeContext cwktORc = new CompositeContext("cwktORc");
-		cwktORc.addMember(scup);
-		cwktORc.addMember(swat);
-		cwktORc.addMember(sket);
+		cwktORc.addMember(cup);
+		cwktORc.addMember(wat);
+		cwktORc.addMember(ket);
 		cwktORc.addMember(teaORcof);
 		method.composite(cwktORc);
 		System.out.print("cwktORc value:");
@@ -103,7 +109,7 @@ public class Count {
 		System.out.println(MakeHotDrink2.set.get("nor_"+MakeHotDrink2.activityName));*/
 		
 	//	System.out.println("activity node : MakeHotDrink3");
-		Activity MakeHotDrink3 = new Activity("MakeHotDrink3",ssug, 0.4);
+		Activity MakeHotDrink3 = new Activity("MakeHotDrink3",sug, 0.4);
 	/*	System.out.println(MakeHotDrink3.set.get(MakeHotDrink3.activityName));
 		System.out.println(MakeHotDrink3.set.get("not_"+MakeHotDrink3.activityName));
 		System.out.println(MakeHotDrink3.set.get("nor_"+MakeHotDrink3.activityName));*/
@@ -114,10 +120,10 @@ public class Count {
 		MakeHotDrinkall = method.DempsterCombination(MakeHotDrink, MakeHotDrink2);
 		MakeHotDrinkall = method.DempsterCombination(MakeHotDrinkall, MakeHotDrink3);
 		//MakeHotDrinkall = method.DempsterCombination(method.DempsterCombination(MakeHotDrink, MakeHotDrink2),MakeHotDrink3);
-		System.out.println("MakeHotDrinkall:"+MakeHotDrinkall.set.get(MakeHotDrinkall.activityName));
+	/*	System.out.println("MakeHotDrinkall:"+MakeHotDrinkall.set.get(MakeHotDrinkall.activityName));
 		System.out.println("not_MakeHotDrinkall:"+MakeHotDrinkall.set.get("not_"+MakeHotDrinkall.activityName));
 		System.out.println("nor_MakeHotDrinkall:"+MakeHotDrinkall.set.get("nor_"+MakeHotDrinkall.activityName));
-		
+		*/
 		System.out.println("Belief and Plausibility");
 		System.out.print("Bel(MakeColdDrink) :");
 		System.out.println(method.Belief(MakeColdDrink));
@@ -128,15 +134,7 @@ public class Count {
 		System.out.print("Pls(MakeHotDrink) :");
 		System.out.println(method.Plausibility(MakeHotDrinkall));
 		
-        FileWriter fileWriter = new FileWriter("C:\\Users\\tenisten\\Desktop\\data.txt"); 
-        
-        String s = new String(String.valueOf(method.Belief(MakeColdDrink)));  
-        String s1 = new String(String.valueOf(method.Belief(MakeHotDrinkall)));
-        String s2 = new String(String.valueOf(method.Belief(MakeHotDrinkall)-method.Belief(MakeColdDrink)));
-        fileWriter.write(s+" ");
-        fileWriter.write(s1+" ");
-        fileWriter.write(s2);
-        fileWriter.close(); 
+
 
 	}
 }

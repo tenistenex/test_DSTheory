@@ -20,7 +20,7 @@ public class Activity {
 		set.put("nor_"+this.activityName, value);
 	}
 	
-	public Activity(String activityName,ContextA context,double mapValue){
+	public Activity(String activityName,Context context,double mapValue){
 		double value = 0;
 		this.activityName = activityName;
 		
@@ -42,49 +42,6 @@ public class Activity {
 			this.set.put("nor_"+this.activityName, 1.0);
 		}
 		
-		
-	}
-	
-	public Activity(String activityName,Sensor s,double mapValue){
-		double value = 0;
-		this.activityName = activityName;
-		
-		if (s.set.get("on") != 0) {  
-			value = s.set.get("on") * mapValue;
-			this.set.put(this.activityName, value);
-			value = (1 - value); // context map to nor context
-			this.set.put("un_" + this.activityName, value);
-			
-			// this configurations is adjust by yourself
-			this.set.put("not_" +  this.activityName, 0.0);    //need to check again!
-			this.set.put("nor_" +  this.activityName, value);
-			
-		}
-		
-		else if (s.set.get("off") != 0) {  
-			
-			/*System.out.println("**************");
-			System.out.println(value);
-			System.out.println("**************");*/
-			value = 1; // context map to nor context
-			this.set.put(this.activityName, 0.0);
-			this.set.put("un_" + this.activityName, value);   //this mapping is strange?
-			this.set.put("not_" + this.activityName, 0.0);
-			this.set.put("nor_" + this.activityName, value);  
-			/* this configurations is adjust by yourself
-			this.set.put(this.activityName, 0.0);    //need to check again!
-			this.set.put("nor_" +  this.activityName, value);*/
-			
-		}
-		
-		else if (s.set.get("nor") != 0){
-			
-			value = 1; // context map to nor context
-			this.set.put(this.activityName, 0.0);
-			this.set.put("un_" + this.activityName, value);   //this mapping is strange?
-			this.set.put("not_" + this.activityName, 0.0);
-			this.set.put("nor_" + this.activityName, value);  
-		}
 		
 	}
 	

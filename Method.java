@@ -6,8 +6,8 @@ public class Method {
 	//couting discouting-rate//
 	
 	public Sensor countRate(Sensor sen){
-		Double value;
-		double rate = sen.discoutingRate;
+		double value;
+		double rate = sen.discoutRate;
 		//////check sensor on or off equal 1 
 		if (sen.set.get("on") != 0){
 			value = sen.set.get("on") * (1 - rate);
@@ -26,20 +26,26 @@ public class Method {
 			sen.set.put("off", 0.0);
 			sen.set.put("nor", 1.0);
 		}
-		
 		return sen;
 	}
 	
 	public CompositeContext composite(CompositeContext context){
 		//System.out.println("composite!!!!!");
-		double value = 0;
+		int i=0;
+		Double value = 0.0;
 		double notvalue = 0;
 		double norvalue = 0;
 		
 		int memberCount = context.member.size();
 		//System.out.println(context.member.get(1).getClass().getName().toString());   //this line print the object which class is
-		for (int i=0; i < memberCount; i++){
-				switch(context.member.get(i).getClass().getName().toString()){
+		while(i < memberCount){
+			Context c = context.member.get(i);
+			//System.out.println(i);
+			//System.out.println(c.contextName);
+			value = value + c.set.get(c.contextName);
+			notvalue = notvalue + c.set.get("not_"+c.contextName);
+			norvalue = norvalue + c.set.get("nor_"+c.contextName);
+		/*		switch(context.member.get(i).getClass().getName().toString()){
 				case "test_DSTheory.Sensor":
 					Sensor s = (Sensor)context.member.get(i);
 					value = value + s.set.get("on");
@@ -62,14 +68,14 @@ public class Method {
 					notvalue = notvalue + b.set.get("not_"+b.contextName);
 					norvalue = norvalue + b.set.get("nor_"+b.contextName);
 					//System.out.println("Object is ContextB");
-					break;
+					break;*/
+			//System.out.println("---------------");
+			i++;
 				}
-				
-				
 			context.set.put(context.contextName, value/context.member.size());  //the value of context("on")!
 			context.set.put("not_"+context.contextName, notvalue/context.member.size());
 			context.set.put("nor_"+context.contextName, norvalue/context.member.size());
-			}
+			
 		
 		return context;
 		
@@ -83,9 +89,6 @@ public class Method {
 		c.activityName = a.activityName;
 		
 		value = (a.set.get(a.activityName)*b.set.get(b.activityName) + a.set.get("nor_"+a.activityName)*b.set.get(b.activityName) + a.set.get(a.activityName)*b.set.get("nor_"+b.activityName))/(1-(a.set.get(a.activityName)*b.set.get("not_"+b.activityName)+a.set.get("not_"+a.activityName)*b.set.get(b.activityName)));
-		System.out.println("************");
-		System.out.println(value);
-		System.out.println("************");
 		c.set.put(c.activityName, value);
 		notvalue = (a.set.get("not_" + a.activityName)*b.set.get("not_" + b.activityName) + a.set.get("nor_" + a.activityName)*b.set.get("not_" + b.activityName)+a.set.get("not_" + a.activityName)*b.set.get("nor_" + b.activityName))/(1-(a.set.get(a.activityName)*b.set.get("not_"+b.activityName)+a.set.get("not_"+a.activityName)*b.set.get(b.activityName)));
 		c.set.put("not_"+c.activityName, notvalue);
