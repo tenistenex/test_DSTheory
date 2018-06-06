@@ -2,6 +2,7 @@ package test_DSTheory;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.math.BigDecimal;
 
 public class Count {
 
@@ -34,6 +35,13 @@ public class Count {
 		scof = method.countRate(scof);
 		ssug = method.countRate(ssug);
 		
+		System.out.print("scup.set.get(\"on\"):");
+		System.out.println(scup.set.get("on"));
+		System.out.print("scup.set.get(\"off\"):");
+		System.out.println(scup.set.get("off"));
+		System.out.print("scup.set.get(\"nor\"):");
+		System.out.println(scup.set.get("nor"));
+		
 
 /*		System.out.println("sfir on:"+sfri.set.get("on"));
 		System.out.println("sfir off:"+sfri.set.get("off"));
@@ -42,17 +50,26 @@ public class Count {
 		// set context and map
 		//System.out.println("******contextA****");
 		Context cup = new Context("cup",scup);
+		Context fri = new Context("fri",sfri);
 		Context wat = new Context("wat",swat);
 		Context ket = new Context("ket",sket);
+		Context tea = new Context("tea",stea);
+		Context cof = new Context("cof",scof);
 		Context sug = new Context("sug",ssug);
-		Context juice = new Context("juice",sfri,0.9);
-		Context milk = new Context("milk",sfri,0.1);
-/*		System.out.println("juice :"+juice.set.get("juice"));
+		
+		Context juice = new Context("juice",fri,0.9);
+		Context milk = new Context("milk",fri,0.1);
+		
+		
+		Context teaORcof = new Context("teaORcof", tea, cof);
+		
+		System.out.println("juice :"+juice.set.get("juice"));
 		System.out.println("not_juice:"+juice.set.get("not_juice"));
-		System.out.println("nor_juice:"+juice.set.get("nor_juice"));*/
+		System.out.println("nor_juice:"+juice.set.get("nor_juice"));
 		
 		
-		Context teaORcof = new Context("teaORcof", scof, stea);
+		
+		
 		
 /*		System.out.println("teaORcof :"+teaORcof.set.get("teaORcof"));
 		System.out.println("not_teaORcof:"+teaORcof.set.get("not_teaORcof"));
@@ -60,19 +77,20 @@ public class Count {
 		
 		
 //		System.out.println("******composite context*****");
+		
 		CompositeContext juiceAndcup = new CompositeContext("juiceAndcup");
 		juiceAndcup.addMember(juice);
 		juiceAndcup.addMember(cup);
 		method.composite(juiceAndcup);
 		
 		
-		
+/*		
 		System.out.print("juiceAndcup value:");
 		System.out.println(juiceAndcup.set.get("juiceAndcup"));
 		System.out.print("not juiceAndcup value:");
 		System.out.println(juiceAndcup.set.get("not_juiceAndcup"));
 		System.out.print("nor juiceAndcup value:");
-		System.out.println(juiceAndcup.set.get("nor_juiceAndcup"));
+		System.out.println(juiceAndcup.set.get("nor_juiceAndcup"));*/
 		
 		
 		CompositeContext cwktORc = new CompositeContext("cwktORc");
@@ -81,12 +99,12 @@ public class Count {
 		cwktORc.addMember(ket);
 		cwktORc.addMember(teaORcof);
 		method.composite(cwktORc);
-		System.out.print("cwktORc value:");
+/*		System.out.print("cwktORc value:");
 		System.out.println(cwktORc.set.get("cwktORc"));
 		System.out.print("not cwktORc value:");
 		System.out.println(cwktORc.set.get("not_cwktORc"));
 		System.out.print("nor cwktORc value:");
-		System.out.println(cwktORc.set.get("nor_cwktORc"));
+		System.out.println(cwktORc.set.get("nor_cwktORc"));*/
 		
 		
 	/*	System.out.println("Translating to activity node");
@@ -124,7 +142,7 @@ public class Count {
 		System.out.println("not_MakeHotDrinkall:"+MakeHotDrinkall.set.get("not_"+MakeHotDrinkall.activityName));
 		System.out.println("nor_MakeHotDrinkall:"+MakeHotDrinkall.set.get("nor_"+MakeHotDrinkall.activityName));
 		*/
-		System.out.println("Belief and Plausibility");
+	/*	System.out.println("Belief and Plausibility");
 		System.out.print("Bel(MakeColdDrink) :");
 		System.out.println(method.Belief(MakeColdDrink));
 		System.out.print("Pls(MakeColdDrink) :");
@@ -132,7 +150,7 @@ public class Count {
 		System.out.print("Bel(MakeHotDrink) :");
 		System.out.println(method.Belief(MakeHotDrinkall));
 		System.out.print("Pls(MakeHotDrink) :");
-		System.out.println(method.Plausibility(MakeHotDrinkall));
+		System.out.println(method.Plausibility(MakeHotDrinkall));*/
 		
 
 

@@ -20,16 +20,17 @@ public class Context {
 		this.set.put("nor_"+this.contextName, s.set.get("nor"));
 	}
 
-	public Context(String contextName, Sensor s, double mapValue) {
+	public Context(String contextName, Context s, double mapValue) {
 
-		if (s.set.get("on") != 0) { // only compute the "sfri = on" context,need
-									// to add off version
+		if (s.set.get(s.contextName) != 0) {                            // only compute the "sfri = on" context,need
+									                                    // to add off version
 			this.contextName = contextName;
 			this.mapValue = mapValue;
-			value = s.set.get("on") * mapValue;
+			value = s.set.get(s.contextName) * mapValue;
+			
 			this.set.put(contextName, value);
-			// this configurations is adjust by yourself
-			this.set.put("not_" + contextName, 0.0); // need to check again!
+			                                                             // this configurations is adjust by yourself
+			this.set.put("not_" + contextName, 0.0);                     // need to check again!
 			this.set.put("nor_" + contextName, 1-value);
 
 		} else {
@@ -41,12 +42,12 @@ public class Context {
 
 	}
 
-	public Context(String contextName, Sensor a, Sensor b) {
+	public Context(String contextName, Context a, Context b) {
 		this.contextName = contextName;
-		a_value = a.set.get("on");
-		b_value = b.set.get("on");
-		not_a_value = a.set.get("off");
-		not_b_value = b.set.get("off");
+		a_value = a.set.get(a.contextName);
+		b_value = b.set.get(b.contextName);
+		not_a_value = a.set.get("not_"+a.contextName);
+		not_b_value = b.set.get("not_"+b.contextName);
 		
 		if (a_value != 0 && b_value != 0){
 			if (a_value > b_value){

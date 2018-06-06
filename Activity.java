@@ -27,11 +27,11 @@ public class Activity {
 		if (context.set.get(context.contextName) != 0) {  
 			value = context.set.get(context.contextName) * mapValue;
 			this.set.put(this.activityName, value);
-			value = (1 - value); // context map to nor context
+			value = (1 - value);                                                   // context map to nor context
 			this.set.put("un_" + this.activityName, value);
 			
-			// this configurations is adjust by yourself
-			this.set.put("not_" +  this.activityName, 0.0);    //need to check again!
+			                                                                         // this configurations is adjust by yourself
+			this.set.put("not_" +  this.activityName, 0.0);                            //need to check again!
 			this.set.put("nor_" +  this.activityName, value);
 			
 		}
